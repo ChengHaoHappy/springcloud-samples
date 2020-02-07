@@ -2,7 +2,7 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka/
-    register-with-eureka: false
+    register-with-eureka: false #是否需要注册到其它server上
   server:
     enable-self-preservation: false  # turn off self preservation mode
 spring:

@@ -3,6 +3,7 @@ package com.example.product.client;
 import com.example.product.common.DecreaseStockInput;
 import com.example.product.common.ProductInfoOutput;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -19,4 +20,7 @@ public interface ProductClient {
 
     @PostMapping("/product/decreaseStock")
     void decreaseStock(@RequestBody List<DecreaseStockInput> decreaseStockInputList);
+
+    @GetMapping("/msg")//通过 @GetMapping("/msg") 来匹配远程服务
+    String getProductMsgByFeign();
 }
