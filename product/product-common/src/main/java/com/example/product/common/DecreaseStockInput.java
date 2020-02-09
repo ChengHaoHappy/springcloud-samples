@@ -12,6 +12,9 @@ public class DecreaseStockInput {
 
     private String productId;
 
+    /**
+     * 扣除的商品数量
+     */
     private Integer productQuantity;
 
     public DecreaseStockInput() {

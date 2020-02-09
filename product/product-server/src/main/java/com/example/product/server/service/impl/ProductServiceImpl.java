@@ -54,7 +54,7 @@ public class ProductServiceImpl implements ProductService {
     public void decreaseStock(List<DecreaseStockInput> decreaseStockInputList) {
         List<ProductInfo> productInfoList = decreaseStockProcess(decreaseStockInputList);
 
-        //发送mq消息
+        //发送mq消息（整个购物车信息）
         List<ProductInfoOutput> productInfoOutputList = productInfoList.stream().map(e -> {
             ProductInfoOutput output = new ProductInfoOutput();
             BeanUtils.copyProperties(e, output);
@@ -64,6 +64,11 @@ public class ProductServiceImpl implements ProductService {
 
     }
 
+    /**
+     * 完成整个购物车的扣库存操作
+     * @param decreaseStockInputList
+     * @return
+     */
     @Transactional
     public List<ProductInfo> decreaseStockProcess(List<DecreaseStockInput> decreaseStockInputList) {
         List<ProductInfo> productInfoList = new ArrayList<>();
