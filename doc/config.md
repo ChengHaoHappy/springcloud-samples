@@ -8,7 +8,7 @@ eg:order-dev.yml 会匹配 order-dev.yml
 
 
 ### SpringCloud Bus 实现动态刷新
-![config自动刷新](./img/config自动刷新.png)
+![config自动刷新](img/config自动刷新.png)
 
 #### 注意点
 - 如果eureka配置端口不是8761,并且客户端在application.yml里没有配置eureka地址则无法拉取到github上的配置文件，会去拉去默认地址
