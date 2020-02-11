@@ -11,3 +11,7 @@
 - /order/create 只能买家访问
 - /order/finish 只能卖家访问
 - /product/list 都可访问
+
+### 跨域问题
+- 在被调用的类或方法上增加@CrossOrigin注解
+- 在Zuul里增加CorsFilter过滤器
