@@ -13,6 +13,7 @@ eureka:
       defaultZone: http://localhost:8761/eureka/
 zuul:
   routes:
+    order: /myOrder/**
     myProduct: #规则名字
       path: /myProduct/**
       serviceId: product  #服务名
@@ -22,3 +23,16 @@ zuul:
   #排除某些路由
   ignored-patterns:
     - /**/product/listForOrder
+  #全部服义忽略敏感头（全部服务都可传递cookie)
+  sensitive-headers:
+#actuator  启用所有的监控端点 “*”号代表启用所有的监控端点，可以单独启用，例如，health，info，metrics
+#spring boot 升为 2.0 后，为了安全，默认 Actuator 只暴露2个端点，heath 和 info
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+#默认的日志级别无法将api信息打印出来
+logging:
+  level:
+    org.springframework.web: TRACE
