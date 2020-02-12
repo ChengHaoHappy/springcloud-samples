@@ -1,5 +1,6 @@
 package com.example.product.client;
 
+import com.example.product.client.impl.ProductClientFallback;
 import com.example.product.common.DecreaseStockInput;
 import com.example.product.common.ProductInfoOutput;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -13,7 +14,7 @@ import java.util.List;
  * 对外提供的接口
  * Created By ChengHao On 2020/2/5
  */
-@FeignClient(name="product")
+@FeignClient(name="product",fallback = ProductClientFallback.class)
 public interface ProductClient {
     @PostMapping("/product/listForOrder")
     List<ProductInfoOutput> listForOrder(@RequestBody List<String> productIdList);

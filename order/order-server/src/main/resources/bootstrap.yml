@@ -24,3 +24,29 @@ spring:
   redis:
     host: localhost
     port: 6379
+#超时设置
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 1000
+    #特定方法的设置
+    getProductInfoList:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 3000
+feign:
+  hystrix:
+    enabled: true
+#management:
+#  endpoints:
+#    web:
+#      base-path: /
+#      exposure:
+#        include: ["hystrix-stream"]
+logging:
+  level:
+    org.springframework.web: TRACE
